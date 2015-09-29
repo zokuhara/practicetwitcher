@@ -1,1 +1,16 @@
 <h1>Timeline</h1>
+
+
+<ul>
+<% @users.each do |user| %>
+  <% if @current_user.following? user %>
+    <li>
+      <%= link_to "Unfollow #{user.username}", unfollow_user_path(id: user.id), method: :post %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to "Follow #{user.username}", follow_user_path(id: user.id), method: :post %>
+    </li>
+  <% end %>
+<% end %>
+</ul>

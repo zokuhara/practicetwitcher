@@ -4,12 +4,12 @@ Rails.application.routes.draw do
 
   get 'sign_in' => 'sessions#new', as: :sign_in
   post 'sign_in' =>'sessions#create'
-  delete 'sign_in' => 'session#destroy', as: :sign_out
+  delete 'sign_in' => 'sessions#delete', as: :sign_out
 
   get '/users/new' => 'users#new', as: :sign_up
   post '/users' => 'users#create', as: :users
 
-  post "/users/:id/follow" => "following#create", as: :follow_user
+  post '/users/:id/follow' => 'following#create', as: :follow_user
   post '/users/:id/unfollow' => 'following#delete', as: :unfollow_user
 
   get 'twits/new' => 'twits#new', as: :new_twit

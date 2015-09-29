@@ -9,8 +9,8 @@ class FollowingController <ApplicationController
   end
 
   def delete
-    new_user = User.find_by params [:id]
+    new_user = User.find params[:id]
     @current_user.stop_following(new_user)
-    redirect_to root_path, notice: "You are no longer follwing #{new_user.username}"
+    redirect_to root_path, notice: "You are no longer following #{new_user.username}"
   end
 end

@@ -7,8 +7,42 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <span class="navbar-brand">
+            <strong>Twitcher</strong>
+          </span>
+          <span class="navbar-brand">
+            <% if @current_user %>
+              Hello, <%= @current_user.username %>
+            <% end %>
+          </span>
+          <ul class="nav navbar-nav">
+            <li>
+              <% if @current_user %>
+                <%= link_to "New Twit", new_twit_path %>
+              <% end %>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if @current_user %>
+            <li>
+              <%= link_to "Log Out", sign_out_path, method: :delete %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+      <% if alert %>
+        <div class="alert"><%= alert %></div>
+      <% end %>
+      <% if notice %>
+        <div class="notice"><%= notice %></div>
+      <% end %>
 
-<%= yield %>
+    <%= yield %>
+  </div>
 
 </body>
 </html>
