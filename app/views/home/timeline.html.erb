@@ -1,9 +1,9 @@
 <h1>Timeline</h1>
 
 <% @people.each do |person| %>
-  <div>
-    <%= person.user.username %>
-    <%= person.body %>
+  <div id="twit">
+    <span class="username"><%= person.user.username %>: <small><%= time_ago_in_words person.created_at %></small><span><br/>
+    <blockquote><%= person.body %></blockquote>
   </div>
 <% end %>
 

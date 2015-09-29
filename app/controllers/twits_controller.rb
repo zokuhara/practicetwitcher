@@ -6,6 +6,7 @@ class TwitsController < ApplicationController
 
   def create
     @twit = Twit.new params.require(:twit).permit(:body, :twit_id)
+    @twit.user = @current_user
     if @twit.save
       redirect_to root_path
     else
