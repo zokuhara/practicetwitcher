@@ -18,7 +18,8 @@ class SessionsController < ApplicationController
     end
   end
 
-  # def delete
-  #   session.delete :user_id
-  #   redirect_to root_path, notice: "You are now logged out"
+  def delete
+    session.delete :user_id
+    redirect_to root_path, notice: "You are now logged out"
+  end
 end
