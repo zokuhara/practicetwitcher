@@ -13,3 +13,6 @@ deploy:
   app: guarded-mountain-6640
   on:
     repo: zokuhara/practicetwitcher
+  run:
+    - "rake db:migrate"
+    - "rake cleanup"
