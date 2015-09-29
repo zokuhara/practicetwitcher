@@ -14,5 +14,6 @@ deploy:
   on:
     repo: zokuhara/practicetwitcher
   run:
+    - "rake db:seed"
     - "rake db:migrate"
     - "rake cleanup"

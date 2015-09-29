@@ -1,22 +1,30 @@
-<h1>Timeline</h1>
+<div class="container">
+  <h1 class="col-md-5 col-md-offset-2">
+    Timeline
+  </h1>
 
-<% @people.each do |person| %>
-  <div id="twit">
-    <span class="username"><%= person.user.username %>: <small><%= time_ago_in_words person.created_at %></small><span><br/>
-    <blockquote><%= person.body %></blockquote>
+  <div class="row">
+    <div id="twit" class="col-md-5 col-md-offset-2">
+      <% @people.each do |person| %>
+        <span class="username"><%= person.user.username %>: <small><%= time_ago_in_words person.created_at %></small><span><br/>
+        <blockquote><%= person.body %></blockquote>
+      <% end %>
+    </div>
+
+    <div class="col-md-3">
+      <ul>
+      <% @users.each do |user| %>
+        <% if @current_user.following? user %>
+          <li>
+            <%= link_to "Unfollow #{user.username}", unfollow_user_path(id: user.id), method: :post %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Follow #{user.username}", follow_user_path(id: user.id), method: :post %>
+          </li>
+        <% end %>
+      <% end %>
+      </ul>
+    </div>
   </div>
-<% end %>
-
-<ul>
-<% @users.each do |user| %>
-  <% if @current_user.following? user %>
-    <li>
-      <%= link_to "Unfollow #{user.username}", unfollow_user_path(id: user.id), method: :post %>
-    </li>
-  <% else %>
-    <li>
-      <%= link_to "Follow #{user.username}", follow_user_path(id: user.id), method: :post %>
-    </li>
-  <% end %>
-<% end %>
-</ul>
+</div>
