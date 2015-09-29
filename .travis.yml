@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.2.3
+addons:
+  postgresql: '9.4'
+before_script:
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key:
+    secure: sfxb8xFxaPVeC+L3PkpxHurmZkfM9mUek6eECtJcE+3UKLQchFNFpE+SYRb1U93t+UXvdoHeHNdGw8laD3T07ssvSmbvZQzsi22S3+AD8GN2ozPF4/C0YC6UNfqfiwCsS7Vlw48h5BZoNVTBBONvI5QBMi8so0vMOUZ3xts2VZi6DeLbrw7QAOWCP1cxL45gcnXpetKsY39kQ1p11I9Xxvykuujel2WEe6b/hy3yIGjrkHJ6AjHQ4baV3HzOuBhjqRRjg4vHhzQi/79JjnqPomIJ2pQ0LU058AKmKLAhp368McDvSyaz3xOpH1QiMkdKT00u1PftqzjSz0Ut5Va8B3+RFRxslQWxxE1fKI4ktZu4oWgjmdr48UJL9cv9H1f3wVXqADG7AfinPVyn8jcHwj7wuM3VqFcTvnCG1UY2LJ+wQbRpmdXs8dby4YHr2FJi6G4FqjP6zjOcwcJtJfPjmjKPExMir3O7Ku9RGbzfMxeexAGoesmJY22x7u9u9eBe2ET4tG1tjJMnUJz5R4Omu/T2tdM3MfURkQTufju4/xBJICXrHFVpO67JpgytXodhNZv7TMm8/DvXUSRkLyrT56uogwTvoC8/APbRQ+e2rTwDBRUML08IbjnyfsUhajT1xG6Nn9ty122lWySNsVxVBF1tt6neh8ZzJrrZoPbluEQ=
+  app: guarded-mountain-6640
+  on:
+    repo: zokuhara/practicetwitcher
